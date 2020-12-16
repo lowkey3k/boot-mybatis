@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class TestController {
     }
 
     @PostMapping("/validation")
-    public TestVO vali(@Valid @RequestBody TestVO testVO){
+    public Object vali(@Valid @RequestBody TestVO testVO, BindingResult result){
         return testVO;
     }
 }
