@@ -1,22 +1,18 @@
-package com.example.demo.mapper.one;
+package com.example.demo.mapper;
 
-import com.example.demo.mapper.OneEnum;
-import com.example.demo.mapper.two.TwoTable;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author haitao.li
- * @title: OneTable
  * @description:
- * @date 2020/12/1610:00
+ * @date 2021/1/26 11:20
  */
 @Data
-public class OneTable {
+public class ThreeTable {
 
     private String id;
 
@@ -28,14 +24,5 @@ public class OneTable {
 
     private OneEnum oneEnum;
 
-    private Map<String,String> map;
-
     private List<String> list;
-
-    private List<TwoTable> twoTables;
-
-    private TwoTable table;
-
-
-
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.one.UserMapper">
+
+    <insert id="insert" parameterType="com.example.demo.mapper.one.User">
+        insert user (username,age,grade,phone,sex)
+        values( #{user.username,jdbcType=VARCHAR}
+                ,#{user.age,jdbcType=INTEGER}
+                ,#{user.grade,jdbcType=VARCHAR}
+                ,#{user.phone,jdbcType=VARCHAR}
+                ,#{user.sex,jdbcType=VARCHAR});
+    </insert>
+
+
+    <select id="select" resultType="com.example.demo.mapper.one.User">
+        select age from user where age > 18
+    </select>
+
+
+</mapper>

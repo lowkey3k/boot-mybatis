@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2020/12/1610:00
  */
 @Data
-public class OneTable {
+public class OneTableCopy {
 
     private String id;
 

@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @date 2020/12/169:44
  */
 @Configuration
-@MapperScan(basePackages = "com.example.demo.mapper.one"
+@MapperScan(basePackages = {"com.example.demo.mapper.one"}
         , sqlSessionFactoryRef = "oneSqlSessionFactory"
         , sqlSessionTemplateRef = "oneSqlSessionTemplate")
 public class OneMybatisConfig {
