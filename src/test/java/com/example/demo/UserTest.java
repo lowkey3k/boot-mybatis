@@ -48,19 +48,17 @@ public class UserTest {
      * 有索引
      * 数据量  where条件    耗时（ms)
      * 100     age>18     900左右
-     *
      */
     @Test
     public void test02() {
 
-        StopWatch stopWatch=new StopWatch();
+        StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        Page<Object> objects = PageHelper.startPage(10, 100000).doSelectPage(() ->
-        {
+        Page<Object> objects = PageHelper.startPage(10, 100000).doSelectPage(() -> {
             List<User> select = userMapper.select();
         });
         stopWatch.stop();
-        System.err.println("耗时："+stopWatch.getTotalTimeMillis());
+        System.err.println("耗时：" + stopWatch.getTotalTimeMillis());
 
     }
 
