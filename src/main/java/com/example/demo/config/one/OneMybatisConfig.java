@@ -1,6 +1,8 @@
 package com.example.demo.config.one;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.example.demo.config.DefinedPageInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 /**
  * @author haitao.li
@@ -36,11 +39,13 @@ public class OneMybatisConfig {
             sqlSessionFactoryBean.setMapperLocations(
                     // 设置mybatis的xml所在位置
                     new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/one/*Mapper.xml"));
+//            sqlSessionFactoryBean.setPlugins(new DefinedPageInterceptor());
             return sqlSessionFactoryBean.getObject();
         } catch (Exception e) {
             return null;
         }
     }
+
 
     @Bean("oneSqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate(@Qualifier("oneSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {

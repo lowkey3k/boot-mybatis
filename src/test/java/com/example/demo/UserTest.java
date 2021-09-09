@@ -5,18 +5,24 @@ import com.example.demo.mapper.one.UserMapper;
 import com.example.demo.util.RandomUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.RowBounds;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.StopWatch;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author haitao.li
  * @description:
  * @date 2021/2/7 15:40
  */
+@Slf4j
 @SpringBootTest
 public class UserTest {
 
@@ -27,7 +33,7 @@ public class UserTest {
     public void test01() {
 
         User user = new User();
-        for (int i = 0; i < 8000000; i++) {
+        for (int i = 0; i < 8; i++) {
             user.setUsername(RandomUtils.randomName());
             user.setGrade(RandomUtils.randomGrade());
             user.setAge(RandomUtils.randomInt(15, 30));
@@ -62,4 +68,35 @@ public class UserTest {
 
     }
 
+    /**
+     * rowBounds分页
+     */
+    @Test
+    public void test03() {
+        List<User> users = userMapper.selectPage(new RowBounds(5, 10));
+        log.info("users:{}", users);
+    }
+
+    /**
+     * 自定义PageInterceptor分页
+     */
+    @Test
+    public void test04() {
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageNum(5);
+        pageInfo.setPageSize(5);
+        List<User> users = userMapper.selectPageByInterceptor(pageInfo);
+        log.info("users:{}", users);
+    }
+
+    /**
+     * PageHelper分页
+     */
+    @Test
+    public void test05() {
+        PageHelper.startPage(0, 5);
+        List<User> users = userMapper.selectPageHelper();
+        PageInfo<User> pageInfo = new PageInfo<User>(users);
+        log.info("pageInfo:{}", pageInfo);
+    }
 }

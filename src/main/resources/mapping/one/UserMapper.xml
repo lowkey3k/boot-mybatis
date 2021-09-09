@@ -16,5 +16,15 @@
         select age from user where age > 18
     </select>
 
+    <select id="selectPage" resultType="com.example.demo.mapper.one.User">
+        select * from user
+    </select>
+
+    <select id="selectPageByInterceptor" resultType="com.example.demo.mapper.one.User">
+        select * from user
+    </select>
+    <select id="selectPageHelper" resultType="com.example.demo.mapper.one.User">
+        select * from user
+    </select>
 
 </mapper>

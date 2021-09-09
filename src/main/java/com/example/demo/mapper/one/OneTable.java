@@ -18,7 +18,7 @@ import java.util.Map;
 @Data
 public class OneTable {
 
-    private String id;
+    private Long id;
 
     private String field;
 

@@ -27,7 +27,6 @@ public class BeanUtilTest {
     @Test
     public void test01() {
         OneTable table = new OneTable();
-        table.setId("s");
         table.setField("old field");
         table.setDate(new Date());
         table.setOneEnum(OneEnum.ONE);

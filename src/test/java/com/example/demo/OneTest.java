@@ -22,13 +22,12 @@ public class OneTest {
     OneMapper oneMapper;
 
     @Test
-    public void test01(){
-        OneTable oneTable=new OneTable();
+    public void test01() {
+        OneTable oneTable = new OneTable();
         oneTable.setField("nihao");
-        oneTable.setId(Math.random()+"");
         oneMapper.insert(oneTable);
         List<OneTable> select = oneMapper.select();
-        Assert.notEmpty(select,"not empty");
+        Assert.notEmpty(select, "not empty");
     }
 
 
